@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Opinion — AI Medical Second Opinion for $0.02</title>
+  <meta name="description" content="Get an AI-powered medical second opinion in 60 seconds for $0.02. Multi-model consensus using MedGemma. Built after a real $34,000 surgery quote.">
+  <meta property="og:title" content="Second Opinion — $0.02 Medical AI Second Opinion">
+  <meta property="og:description" content="4 AI models. 60 seconds. $0.02. Get a medical second opinion that would cost $350+ from a specialist.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue: #1a73e8; --blue-dark: #1557b0; --red: #ea4335;
+      --green: #34a853; --yellow: #fbbc04; --purple: #9c27b0;
+      --gray-50: #f8f9fa; --gray-100: #f1f3f4; --gray-200: #e8eaed;
+      --gray-600: #5f6368; --gray-800: #3c4043; --gray-900: #202124;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--gray-900); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0d47a1 0%, #1565c0 40%, #1a73e8 100%);
+      color: white; padding: 80px 0 60px; position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+      background: white; clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 60px);
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+    .hero .subtitle { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin-bottom: 32px; }
+    .hero .stats { display: flex; gap: 32px; margin-bottom: 32px; flex-wrap: wrap; }
+    .hero .stat { text-align: center; }
+    .hero .stat-value { font-size: 2rem; font-weight: 800; }
+    .hero .stat-label { font-size: 0.85rem; opacity: 0.8; }
+    .hero .cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; border: none; cursor: pointer;
+    }
+    .btn-primary { background: white; color: var(--blue); }
+    .btn-primary:hover { background: var(--gray-100); transform: translateY(-1px); }
+    .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.25); }
+
+    /* ORIGIN STORY */
+    .story { padding: 80px 0; background: var(--gray-50); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .story-text h2 { font-size: 2rem; font-weight: 800; margin-bottom: 20px; color: var(--gray-900); }
+    .story-text h2 span { color: var(--red); }
+    .story-text p { color: var(--gray-600); font-size: 1.05rem; margin-bottom: 16px; }
+    .story-text .highlight {
+      background: linear-gradient(120deg, #fef3c7 0%, #fde68a 100%);
+      padding: 2px 8px; border-radius: 4px; font-weight: 600; color: var(--gray-900);
+    }
+    .cost-breakdown {
+      background: white; border-radius: 16px; padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08); border: 1px solid var(--gray-200);
+    }
+    .cost-breakdown h3 { font-size: 1.1rem; color: var(--gray-600); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .cost-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-100); }
+    .cost-item:last-child { border-bottom: none; }
+    .cost-item .label { color: var(--gray-600); }
+    .cost-item .amount { font-weight: 700; }
+    .cost-total { display: flex; justify-content: space-between; padding: 16px 0; margin-top: 8px; border-top: 2px solid var(--gray-900); }
+    .cost-total .label { font-weight: 700; font-size: 1.1rem; }
+    .cost-total .amount { font-weight: 900; font-size: 1.4rem; color: var(--red); }
+    .cost-vs {
+      text-align: center; padding: 20px; margin-top: 20px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border-radius: 12px;
+    }
+    .cost-vs .vs-label { font-size: 0.85rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; }
+    .cost-vs .vs-amount { font-size: 2.5rem; font-weight: 900; color: var(--green); }
+    .cost-vs .vs-note { font-size: 0.9rem; color: var(--gray-600); }
+
+    /* FEATURES */
+    .features { padding: 80px 0; }
+    .features h2 { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 12px; }
+    .features .section-sub { text-align: center; color: var(--gray-600); margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .feature-card {
+      padding: 28px; border-radius: 12px; border: 1px solid var(--gray-200);
+      transition: all 0.2s; background: white;
+    }
+    .feature-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(26,115,232,0.1); transform: translateY(-2px); }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--gray-600); font-size: 0.95rem; }
+
+    /* PIPELINE */
+    .pipeline { padding: 80px 0; background: var(--gray-900); color: white; }
+    .pipeline h2 { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 12px; }
+    .pipeline .section-sub { text-align: center; opacity: 0.7; margin-bottom: 48px; }
+    .pipeline-steps { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; align-items: center; }
+    .pipeline-step {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px; padding: 20px 16px; text-align: center; width: 160px;
+    }
+    .pipeline-step .step-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; }
+    .pipeline-step .step-model { font-weight: 700; font-size: 0.95rem; margin: 8px 0 4px; }
+    .pipeline-step .step-role { font-size: 0.8rem; opacity: 0.7; }
+    .pipeline-step .step-cost { font-size: 0.75rem; color: var(--green); margin-top: 8px; }
+    .pipeline-arrow { font-size: 1.5rem; opacity: 0.4; padding: 0 4px; }
+
+    /* IMPACT */
+    .impact { padding: 80px 0; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+    .impact h2 { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 48px; }
+    .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .impact-card { background: white; border-radius: 12px; padding: 32px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .impact-card .before { color: var(--red); font-size: 1.8rem; font-weight: 800; text-decoration: line-through; opacity: 0.6; }
+    .impact-card .after { color: var(--green); font-size: 2.5rem; font-weight: 900; }
+    .impact-card .metric-label { color: var(--gray-600); font-size: 0.95rem; margin-top: 4px; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; text-align: center; }
+    .cta-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { color: var(--gray-600); font-size: 1.1rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-cta {
+      background: var(--blue); color: white; padding: 18px 48px; font-size: 1.15rem;
+      border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-cta:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,115,232,0.3); }
+
+    /* FOOTER */
+    footer { padding: 40px 0; background: var(--gray-50); border-top: 1px solid var(--gray-200); text-align: center; }
+    footer p { color: var(--gray-600); font-size: 0.9rem; }
+    footer a { color: var(--blue); text-decoration: none; }
+    .disclaimer { max-width: 700px; margin: 16px auto 0; font-size: 0.8rem; color: var(--gray-600); opacity: 0.7; }
+
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .hero .stats { gap: 20px; }
+      .pipeline-steps { flex-direction: column; align-items: center; }
+      .pipeline-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Get a Medical Second Opinion<br>in 60 Seconds for $0.02</h1>
+      <p class="subtitle">Multi-model AI consensus using Google MedGemma. Understand your diagnosis, get questions to ask your doctor, and download a PDF report — all for less than the price of a text message.</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-value">4</div><div class="stat-label">AI Models</div></div>
+        <div class="stat"><div class="stat-value">60s</div><div class="stat-label">Turnaround</div></div>
+        <div class="stat"><div class="stat-value">$0.02</div><div class="stat-label">Per Analysis</div></div>
+        <div class="stat"><div class="stat-value">90%+</div><div class="stat-label">Agreement Rate</div></div>
+      </div>
+      <div class="cta-group">
+        <a href="https://gen-lang-client-0003791133.web.app" class="btn btn-primary">🔴 Try Live Demo</a>
+        <a href="https://github.com/TrendpilotAI/Second-Opinion" class="btn btn-secondary">💻 View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN STORY -->
+  <section class="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <h2>Built in 2 Days After a <span>$34,250</span> Surgery Quote</h2>
+          <p>My wife Tracey broke her wrist. The quote came back: <span class="highlight">$32,000 for the outpatient facility</span> for a titanium plate and carpal tunnel release. Plus $750 for anesthesiology and $1,500 for the surgeon.</p>
+          <p>It happened over a holiday. We had <strong>days, not weeks</strong> to make a decision. Not enough time to find a specialist for a second opinion. Insurance wasn't much help.</p>
+          <p>Knowing about Google's MedGemma models, I built Second Opinion in <strong>2 days</strong> to analyze Tracey's X-rays, audio recordings, and video from the consultation.</p>
+          <p>The result: <span class="highlight">90%+ agreement with the surgeon's diagnosis</span> — plus treatment alternatives, plain-English explanations, and specific questions to ask at our next appointment.</p>
+          <p><strong>Nobody should have to choose between financial ruin and an informed medical decision.</strong></p>
+        </div>
+        <div class="cost-breakdown">
+          <h3>Tracey's Surgery Quote</h3>
+          <div class="cost-item"><span class="label">Outpatient Facility</span><span class="amount">$32,000</span></div>
+          <div class="cost-item"><span class="label">Surgeon</span><span class="amount">$1,500</span></div>
+          <div class="cost-item"><span class="label">Anesthesiologist</span><span class="amount">$750</span></div>
+          <div class="cost-total"><span class="label">Total Quote</span><span class="amount">$34,250</span></div>
+          <div class="cost-vs">
+            <div class="vs-label">Second Opinion AI Analysis</div>
+            <div class="vs-amount">$0.02</div>
+            <div class="vs-note">Same analysis. 1,712,500x cheaper.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2>Everything You Need to Understand Your Diagnosis</h2>
+      <p class="section-sub">Upload your medical files. Get answers in plain English. Bring a report to your doctor.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🩻</div>
+          <h3>Upload & Analyze</h3>
+          <p>Upload X-rays, scans, audio recordings, or consultation videos. Our AI pipeline analyzes everything in under 60 seconds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗣️</div>
+          <h3>Jargon-Free Explanations</h3>
+          <p>Medical terminology automatically highlighted with plain-English tooltips. Hover any medical term to understand what it means.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">❓</div>
+          <h3>Questions for Your Doctor</h3>
+          <p>Get specific, relevant questions to bring to your next appointment — based on YOUR diagnosis, not generic advice.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h3>PDF Report for Your Doctor</h3>
+          <p>Download a professional medical report with findings, confidence scores, and evidence. Hand it to your doctor — they'll take it seriously.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Cost Impact Calculator</h3>
+          <p>See exactly how much you save compared to traditional second opinions. Calculate by region, specialty, and analysis type.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Multi-Language Support</h3>
+          <p>Switch between English and Spanish with one click. Medical disclaimers, explanations, and questions — all in your language.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏥</div>
+          <h3>Specialist Matching</h3>
+          <p>Enter your ZIP code and get matched with relevant specialists nearby — with ratings, availability, and why they're right for your condition.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>Multi-Model Consensus</h3>
+          <p>Not one AI opinion — four. MedGemma and Gemini independently analyze your case, then a consensus engine cross-validates their findings.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Guided Demo Mode</h3>
+          <p>Try everything with zero risk. Demo mode walks you through the full experience with simulated data — no medical files needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="pipeline">
+    <div class="container">
+      <h2>The HAI-DEF Pipeline</h2>
+      <p class="section-sub">Human-AI Interactive Diagnostic Evaluation Framework — 5 stages, 4 models, 1 consensus</p>
+      <div class="pipeline-steps">
+        <div class="pipeline-step">
+          <div class="step-num">Stage 1</div>
+          <div class="step-model">MedSigLIP</div>
+          <div class="step-role">Image Classification</div>
+          <div class="step-cost">~50ms</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage 2</div>
+          <div class="step-model">Gemini Flash</div>
+          <div class="step-role">Complexity Triage</div>
+          <div class="step-cost">~85ms · $0.001</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step" style="border-color: #4285F4;">
+          <div class="step-num">Stage 3</div>
+          <div class="step-model">MedGemma 27B</div>
+          <div class="step-role">Clinical Analysis</div>
+          <div class="step-cost">~3.8s · $0.015</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage 4</div>
+          <div class="step-model">Consensus Engine</div>
+          <div class="step-role">Cross-Validation</div>
+          <div class="step-cost">~150ms</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="step-num">Stage 5</div>
+          <div class="step-model">Gemini Pro</div>
+          <div class="step-role">Patient Translation</div>
+          <div class="step-cost">~600ms · $0.004</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact">
+    <div class="container">
+      <h2>The Impact</h2>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="before">$200–$500</div>
+          <div class="after">$0.02</div>
+          <div class="metric-label">Cost per second opinion</div>
+        </div>
+        <div class="impact-card">
+          <div class="before">2–4 weeks</div>
+          <div class="after">60 sec</div>
+          <div class="metric-label">Time to get results</div>
+        </div>
+        <div class="impact-card">
+          <div class="before">English only</div>
+          <div class="after">EN/ES</div>
+          <div class="metric-label">Language support</div>
+        </div>
+        <div class="impact-card">
+          <div class="before">1 doctor</div>
+          <div class="after">4 AI models</div>
+          <div class="metric-label">Independent analyses</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Try It Now — Free Demo</h2>
+      <p>No signup required. Guided demo mode lets you experience everything with simulated data.</p>
+      <a href="https://gen-lang-client-0003791133.web.app" class="btn-cta">🔴 Launch Second Opinion</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Built with ❤️ and MedGemma by <a href="https://forwardlane.com">Nathan Stevenson</a> · <a href="https://signalhaus.ai">SignalHaus.ai</a></p>
+      <p style="margin-top: 8px;">
+        <a href="https://github.com/TrendpilotAI/Second-Opinion">GitHub</a> ·
+        <a href="https://www.kaggle.com/competitions/med-gemma-impact-challenge">Kaggle MedGemma Challenge</a>
+      </p>
+      <p class="disclaimer">⚠️ Second Opinion is an AI-powered informational tool only. It is NOT a medical diagnosis and should NOT be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult a licensed healthcare provider for medical decisions. If you are experiencing a medical emergency, call 911.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
